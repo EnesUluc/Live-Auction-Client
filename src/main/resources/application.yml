@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: auction-client
+
+  grpc:
+    client:
+      channel:
+        auctionService:
+          target: static://localhost:9090
