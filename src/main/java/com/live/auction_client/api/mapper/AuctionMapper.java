@@ -31,6 +31,7 @@ public class AuctionMapper {
 
     public static AuctionDetailResponseDto convertToDetailResponseDto(AuctionDetailResponse auction) {
         return AuctionDetailResponseDto.builder()
+                .title(auction.getAuctionTitle())
                 .auctionId(auction.getAuctionId())
                 .description(auction.getAuctionDescription())
                 .status(auction.getStatus().toString())

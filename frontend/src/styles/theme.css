@@ -1,0 +1,96 @@
+/* ---------------------------------------------------------------
+   Design tokens — soft, low-saturation palette.
+   Every colour is declared once here and consumed through var().
+   --------------------------------------------------------------- */
+:root {
+  /* surfaces */
+  --bg: #f6f5f2;
+  --bg-tint: #eef0f6;
+  --surface: #fffefc;
+  --surface-2: #f4f3ef;
+  --surface-sunken: #eceae4;
+  --border: #e5e2da;
+  --border-strong: #d6d2c8;
+
+  /* text */
+  --ink: #2f2d2a;
+  --ink-soft: #625d56;
+  --ink-muted: #8d877e;
+
+  /* accents (muted / pastel) */
+  --accent: #7183d6;
+  --accent-hover: #5f71c9;
+  --accent-soft: #e8ebfa;
+  --accent-ink: #41509c;
+
+  --sage: #6faf8d;
+  --sage-soft: #e3f1ea;
+  --sage-ink: #3f7a5e;
+
+  --amber: #cfa055;
+  --amber-soft: #f7efdf;
+  --amber-ink: #8f6a2b;
+
+  --rose: #d38585;
+  --rose-soft: #f8e8e8;
+  --rose-ink: #96494a;
+
+  --lilac: #a48ac9;
+  --lilac-soft: #efe9f8;
+
+  /* geometry */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+
+  --shadow-xs: 0 1px 2px rgba(47, 45, 42, 0.05);
+  --shadow-sm: 0 2px 8px rgba(47, 45, 42, 0.06);
+  --shadow-md: 0 10px 28px -14px rgba(47, 45, 42, 0.28);
+  --shadow-lg: 0 26px 60px -30px rgba(47, 45, 42, 0.4);
+
+  --ring: 0 0 0 3px var(--accent-soft);
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root[data-theme='dark'] {
+  --bg: #16171a;
+  --bg-tint: #1a1c22;
+  --surface: #1e2025;
+  --surface-2: #24262c;
+  --surface-sunken: #191b1f;
+  --border: #2d3037;
+  --border-strong: #3a3e47;
+
+  --ink: #e9e7e3;
+  --ink-soft: #b3aea7;
+  --ink-muted: #85807a;
+
+  --accent: #8b9ae4;
+  --accent-hover: #9dabec;
+  --accent-soft: #272b3c;
+  --accent-ink: #b5c0f2;
+
+  --sage: #7fc0a0;
+  --sage-soft: #1f2c27;
+  --sage-ink: #9ad4b6;
+
+  --amber: #ddb072;
+  --amber-soft: #2e281c;
+  --amber-ink: #e6c48f;
+
+  --rose: #e09797;
+  --rose-soft: #2e2022;
+  --rose-ink: #eeaeae;
+
+  --lilac: #b6a0d9;
+  --lilac-soft: #272233;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 30px -14px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 28px 64px -30px rgba(0, 0, 0, 0.75);
+  --ring: 0 0 0 3px rgba(139, 154, 228, 0.22);
+}
