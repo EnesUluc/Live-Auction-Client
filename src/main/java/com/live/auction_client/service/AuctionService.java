@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AuctionService {
@@ -35,6 +37,19 @@ public class AuctionService {
     public AuctionDetailResponseDto getDetails(String id) {
         AuctionDetailResponse auction = blockingStub.getAuctionDetails(AuctionRequest.newBuilder().setAuctionId(id).build());
         return AuctionMapper.convertToDetailResponseDto(auction);
+    }
+
+    public List<AuctionDetailResponseDto> getLiveAuctions() {
+        Empty empty = Empty.newBuilder().build();
+        LiveAuctionList liveList = blockingStub.getLiveAuctions(empty);
+
+        List<AuctionDetailResponseDto> response = new ArrayList<>();
+
+        for (AuctionDetailResponse detailResponse : liveList.getAuctionDetailList()) {
+            response.add(AuctionMapper.convertToDetailResponseDto(detailResponse));
+        }
+
+        return response;
     }
 
     public PlaceBidResponseDto placeBid(CreateBidRequestDto request) {

@@ -15,20 +15,30 @@ interface Props {
 export function Modal({ open, title, subtitle, onClose, children, footer }: Props) {
   const panelRef = useRef<HTMLDivElement>(null)
 
+  // onClose gets a fresh identity on every parent render; keeping it in a ref
+  // stops the effects below from re-running (and stealing focus) on each keystroke.
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') onCloseRef.current()
     }
     document.addEventListener('keydown', onKey)
     const { overflow } = document.body.style
     document.body.style.overflow = 'hidden'
-    panelRef.current?.querySelector<HTMLElement>('input, textarea, button')?.focus()
     return () => {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = overflow
     }
-  }, [open, onClose])
+  }, [open])
+
+  // Autofocus the first field once per opening — never the close button.
+  useEffect(() => {
+    if (!open) return
+    panelRef.current?.querySelector<HTMLElement>('.modal__body input, .modal__body textarea')?.focus()
+  }, [open])
 
   if (!open) return null
 

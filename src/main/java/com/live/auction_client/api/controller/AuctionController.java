@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/auction")
 @RequiredArgsConstructor
@@ -21,6 +23,11 @@ public class AuctionController {
     @GetMapping("/")
     public AuctionDetailResponseDto getDetails(@RequestParam("id") String id) {
         return auctionService.getDetails(id);
+    }
+
+    @GetMapping("/list")
+    public List<AuctionDetailResponseDto> getLiveAuctions(){
+        return auctionService.getLiveAuctions();
     }
 
     @PostMapping("/bid")
