@@ -6,4 +6,4 @@ spring:
     client:
       channel:
         auctionService:
-          target: static://localhost:9090
+          target: ${API_PROXY_SERVER:static://localhost:9090}
